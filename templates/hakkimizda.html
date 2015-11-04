@@ -1,0 +1,48 @@
+{% extends "base.html" %}{% block govde %}
+
+        <h1 class="page-title-inner"><span class="section-title">Hakkımızda</span></h1>
+
+        <!-- Intro -->
+        <div class="about-intro one-half">
+		<h4>Hakkımızda</h4>
+            {{hakkimizda.0.hakkimizda|safe}}
+        </div>
+        <div class="about-intro one-half last">
+            <h4>Misyonumuz</h4>{{hakkimizda.0.misyonumuz|safe}}
+			<br><br>
+			<h4>Vizyonumuz</h4>{{hakkimizda.0.vizyonumuz|safe}}
+        </div>
+        <!-- /Intro -->
+
+        <div class="clear"></div>
+
+        <!-- Team -->
+        <div class="team-member one-fourth">
+		{% for yonetici in yoneticiler %}
+            <div class="member-photo"><div class="bw-wrapper"><img src="{{yonetici.yoneticiResmi.url}}" alt="" /></div></div>
+            <div class="member-info">
+                <h4>{{yonetici.yoneticiAdiSoyadi}}</h4>
+                <span class="position">F{{yonetici.yoneticiPozisyonu}}</span>
+                <p>{{yonetici.yoneticiHakkinda}}</p>
+                <ul class="member-social-links">
+                    <li><a href="{{yonetici.yoneticiTwitter}}">Twitter</a></li>
+                    <li><a href="{{yonetici.yoneticiLinkedin}}">LinkedIn</a></li>
+                    <li><a href="{{yonetici.yoneticiFacebook}}">facebook</a></li>
+                </ul>
+            </div>
+			{% endfor %}
+        </div>
+      
+        <!-- /Team -->
+
+        <!-- Logo List -->
+        <div class="logo-list">
+            <ul>
+			{% for referanslar in referans %}
+                <li><a href="{{referanslar.referansLink}}"><div class="bw-wrapper"><img src="{{ referanslar.referansLogo.url }}" width=186 height=89 alt="" /></div></a></li>
+				{% endfor %}
+            </ul>
+        </div>
+        <!-- /Logo List -->
+
+  {% endblock %}

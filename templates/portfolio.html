@@ -1,0 +1,31 @@
+{% extends "base.html" %}{% block govde %}
+    <div id="content" class="container clearfix">
+
+        <h1 class="page-title-inner"><span class="section-title">Portfolio</span> </h1>
+
+        <!-- Project Feed Filter -->
+         <ul class="project-feed-filter">
+		 {% for kategoriler in kategori %}
+            <li><a href="{{kategoriler.get_absolute_url}}" class="current" data-filter="*">{{kategoriler.baslik}}</a></li>
+			{% endfor %}
+        </ul>
+        <!-- /Project Feed Filter -->
+
+        <!-- Project Feed -->
+        <div class="project-feed clearfix">
+    
+	{% for portfolios in portfolio %}
+            <div class="one-fourth animation motiongraphics">
+                <a href="{{portfolios.get_absolute_url}}" class="project-item">
+                    <img src="{{portfolios.portfolioResim.url}}" alt="" />
+                    <div class="overlay">
+                        <h5>{{portfolios.portfolioBaslik}}</h5>
+                        <p>{{portfolios.kategori}}</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- /Project Feed -->
+
+ {% endblock %}

@@ -1,0 +1,56 @@
+﻿{% extends "base.html" %}{% block govde %}
+    <div id="ickisim">
+      <div id="solmenuler">
+          <div id="solust"></div>
+          <div id="solorta">
+              <ul>
+			  <li><a href="{% url 'ttk' %}">Ticaret Sicil Belgeleri</a></li>
+                  <li><a href="{% url 'oy' %}">Ortaklık Yapısı</a></li>
+                  <li><a href="{% url 'yk' %}">Yönetim Kurulu</a></li>
+                   <li><a href="{% url 'denetci' %}">Denetçiler</a></li>
+                   <li><a href="{% url 'uy' %}">Üst Yönetim</a></li>
+                   <li><a href="{% url 'df' %}">Dönemsel Finans Sonuçları</a></li>
+                   <li><a href="{% url 'fr' %}">Faaliyet Raporu</a></li>
+                   <li><a href="{% url 'gk' %}">Genel Kurul Bildirileri ve Tutanakları</a></li>
+              </ul>
+
+              <div class="clear"></div>
+          </div>
+          <div id="solkapanis"></div>
+          <div class="clear"></div>
+      </div>
+        <div id="sagtaraf">
+            <div id="sagust"></div>
+<div id="sagorta">
+  <div class="kapsayici">
+    <div class="sagortaresim">
+        <img src="../media/images/ortaklik_yapisi.jpg" />
+    </div>
+<div class="sagbaslik">
+    ORTAKLIK YAPISI
+
+</div>
+<div class="sagicerik">
+<table class="sagtablo"><tbody>
+    
+    <tr><th>Şirket Ortaklık Yapısı</th><th>TL</th><th>%</th></tr>
+	{% for i in oy %}
+      <tr><td>{{i.ortak}}</td><td>{{i.ortakCiro}}</td><td>% {{i.ortakYuzde}}</td></tr>
+	  {% endfor %}
+	  <tr><td><b>Toplam</b></td><td><b>{{toplamCiro|safe}}</b></td><td><b>% {{toplamYuzde}}</b></td></tr>
+                        </tbody>
+						
+	</table>
+</div>
+
+</div>
+    <div class="clear">
+    </div>
+</div>
+            <div id="sagkapanis"></div>
+           
+            <div class="clear"></div>
+        </div>
+
+    </div>
+    {% endblock %}

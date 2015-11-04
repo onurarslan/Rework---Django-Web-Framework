@@ -1,0 +1,25 @@
+ {% if makale %}
+ {% for makaleler in makale %}
+ <a href="{{makaleler.get_absolute_url}}"><h2>{{makaleler.baslik}}</h2></a>
+                <ul>
+                    <li>Yazar <a href="{{makaleler.yazar.slug}}">{{makaleler.yazar}}</a></li>
+                    <li>{{makaleler.yayin_tarihi}}</li>
+                    <li>Etiketler <a href="./blog.html">{{makaleler.etiketler}}</a> </li>
+                    <li><a href="./blog.html">{{yorumSayisi}}  Yorum </a></li>
+                </ul>
+                <div>
+                    <a href="./blog_post.html" title=""><img src="{{makaleler.resim.url}}" alt="" class="image" width="680" height="224" /></a>
+                    <p>
+                        {{makaleler.icerikOzet}}<a href="{{makaleler.get_absolute_url}}">Devamını Oku...</a>
+                    </p>
+                </div>{% endfor %}
+                {% endif %}
+				
+				 <ul>
+            {% if makaleSayfa.has_previous %}
+              <li><a href="/{{ makaleSayfa.previous_page_number }}">Önceki</a></li>{% endif %}
+                                <li class="current"><a href="/{{ makaleSayfa.number }}">{{ makaleSayfa.number }}</a></li>
+                {% if makaleSayfa.has_next %}
+              <li><a href="{{makaleSayfa.next_page_number}}">İleri</a></li>
+                {% endif %}
+            </ul>

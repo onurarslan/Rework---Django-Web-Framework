@@ -1,0 +1,172 @@
+{% load flatpage_menu %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    
+    <title>{{ayar.0.siteBaslik}}{% block sayfaAdi %}{% endblock %}</title>
+    <meta name="description" content="{{ayar.0.siteAciklama}}" />
+	<meta name="keywords" content="{{ayar.0.anahtarKelimeler}}" />
+	{{ayar.0.googleAnalytics|safe}}
+    {% load static from static %}
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'css/jquery.lightbox-0.5.css' %}" media="screen" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/flexslider.css' %}" media="screen" />
+    <script src="{% static 'js/jquery-1.7.2.min.js' %}"></script>
+	<script src="{% static 'js/jquery.lightbox-0.5.js' %}"></script>
+    <script src="{% static 'js/jQuery.BlackAndWhite.min.js' %}"></script>
+    <script src="{% static 'js/jquery.easing-1.3.min.js' %}"></script>
+    <script src="{% static 'js/jquery.flexslider-min.js' %}"></script>
+    <script src="{% static 'js/jquery.isotope.min.js' %}"></script>
+    <script src="{% static 'js/jquery.jcarousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.touchSwipe.min.js' %}"></script>
+    <script src="{% static 'js/respond.min.js' %}"></script>
+    <script src="{% static 'js/selectnav.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+	<script src="{% static 'js/jquery-scrollTo.js' %}"></script>
+    <script src="{% static 'js/accordion.js' %}"></script>
+    <script type="text/javascript" src="http://rework.reworkmedia.net/[JS library]"></script>
+    <!--[if (gte IE 6)&(lte IE 8)]>
+      <script type="text/javascript" src="./js/selectivizr-min.js"></script>
+      <noscript><link rel="stylesheet" href="http://rework.reworkmedia.net/[fallback css]" /></noscript>
+    <![endif]-->
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-32209063-3']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+	<script type="text/javascript">
+$(function() {
+	$('a.lightbox').lightBox();
+});
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+<body>
+
+<!-- Main Container -->
+<div id="body-wrapper">
+
+    <!-- Header -->
+    <div id="header" class="container clearfix">
+
+        <a href="{% url 'anasayfa' %}" id="logo"><img src="{% if ayar %}{% for i in ayar %}{{i.siteLogo.url}}{% endfor %}{% endif %}" width=110 height=100 alt="" /></a>
+
+        <!-- Navigation -->
+        <ul id="navigation">
+		{% flatpage_menu %}
+		
+            <li class="current">
+                <a href="{% url 'anasayfa' %}">Anasayfa</a>
+            </li>
+			
+			{% load flatpages %}{% get_flatpages as flatpages %}
+			{% for menu in flatpages %}
+			<li>
+				<a href="{{menu.url}}">{{menu.title}}</a>
+				<ul>
+				<li>
+				<a href="{{menu.url}}">{{menu.title}}</a></li>
+				</ul>
+			</li>
+			{% endfor %}
+			
+            <li>
+                <a href="{% url 'HakkimizdaView' %}">Hakkımızda</a>
+            </li>
+            <li>
+                <a href="{% url 'BlogAnasayfa' %}">Blog</a>
+            </li>
+            <li>
+                <a href="{% url 'PortfolioGiris' %}">Portfolio</a>
+            </li>
+			<li>
+                <a href="{% url 'ttk' %}">TTK</a>
+            </li>
+            <li>
+                <a href="{% url 'iletisim' %}">İletişim</a>
+            </li>
+        </ul>
+        <!-- /Navigation -->
+        
+    </div>
+    <!-- /Header -->
+
+
+    <!-- Content -->
+    <div id="content" class="container clearfix">
+	<br><br><br>
+{% block govde %}{% endblock %}
+       </div>
+    <div id="footer">
+        <div class="container clearfix">
+
+            <!-- About -->
+            <div class="one-fourth">
+                <a href="{% url 'anasayfa' %}" class="logo"><img src="{% if ayar %}{% for i in ayar %}{{i.siteLogo.url}}{% endfor %}{% endif %}" width=110 height=100 alt="" /></a>
+                <p>{{hakkimizda.0.hakkimizda|safe}}</p>
+            </div>
+            <!-- /About -->
+
+            <!-- Twitter Feed -->
+            <div class="one-fourth">
+                <div class="twitter-feed">
+				{{sosyal.0.twitterWidget|safe}}
+                </div>
+            </div>
+            <!-- /Twitter Feed -->
+
+            <!-- Contacts -->
+            <div class="one-fourth">
+                <h5>İletişim Ayrıntıları</h5>
+
+                <p class="address">Adres: {{ ayar.0.iletisimAdres }}</p>
+                <p class="phone">Tel: {{ayar.0.iletisimTel1}}<br />Tel: {{ayar.0.iletisimTel2}}</p>
+                <p class="email">E-Posta: {{ayar.0.iletisimMail}}</p>
+
+            </div>
+            <!-- /Contacts -->
+
+
+
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="info container clearfix">
+
+            <!-- Copyright -->
+            <ul class="copyright">
+                <li>{{ayar.0.sakliHaklar}}</li>
+            </ul>
+            <!-- /Copyright -->
+
+            <!-- Social Links -->
+            <ul class="social-links">
+                <li class="twitter"><a href="{{sosyal.0.twitterURL}}">Twitter</a></li>
+                <li class="facebook"><a href="{{sosyal.0.facebookURL}}">Facebook</a></li>
+                <li class="linkedin"><a href="{{sosyal.0.linkedinURL}}">LinkedIn</a></li>
+            </ul>
+            <!-- /Social Links -->
+
+        </div>
+    </div>
+<!-- /Footer --></div>
+<!-- /Main Container -->
+
+</body>
+</html>

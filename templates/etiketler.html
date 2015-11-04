@@ -1,0 +1,153 @@
+﻿<p>{% extends "base.html" %}{% block govde %}
+
+{% for etiket in etiketler %}
+{{etiket}}
+{% endfor %}
+<div id="sidebar">
+
+    <input type="text" value="Search" default-value="Search" class="search" />
+
+            <!-- Blog Categories -->
+            <div class="widget">
+                <h5>Kategoriler</h5>
+                
+                <ul class="categories">
+                {% if makale %}
+                {% for makaleler in makale %}
+                    <li><a href="{{makaleler.kategori.get_absolute_url}}">{{makaleler.kategori}}</a></li>
+                    {% endfor %}
+                {% endif %}
+                </ul>
+                
+            </div>
+            <!-- /Blog Categories -->
+
+            <!-- Text Widget -->
+            <div class="widget">
+                <h5>Text Widget</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dui orci, dapibus non luctus, ultrices vel nunc. Donec lacinia mattis erat sit amet blandit.</p>
+            </div>
+            <!-- /Text Widget -->
+
+            <!-- Tabs Widget With Posts -->
+            <div class="widget">
+                <h5>Posts widget</h5>
+                <ul id="tabs">
+                    <li class="active"><a href="#tab1">Recent</a></li>
+                    <li><a href="#tab2">Popular</a></li>
+                </ul>
+                <div id="tabs_content_container">
+                    <div id="tab1" class="tab-content">
+                        <ul class="posts">
+                            <li>
+                                <a href="http://rework.reworkmedia.net/single_post.html"><img src="../media/images/content/posts_widget_01.jpg" alt="" /></a>
+                                <div class="entry">
+                                   <a href="http://rework.reworkmedia.net/single_post.html">Lorem ipsum dolor sit, consectetuer.</a>
+                                   <span class="date">July 8th, 2012</span>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="http://rework.reworkmedia.net/single_post.html"><img src="../media/images/content/posts_widget_02.jpg" alt="" /></a>
+                                <div class="entry">
+                                   <a href="http://rework.reworkmedia.net/single_post.html">Nam ultricies dolor eu velit varius scelerisque.</a>
+                                   <span class="date">July 5th, 2012</span>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="http://rework.reworkmedia.net/single_post.html"><img src="../media/images/content/posts_widget_03.jpg" alt="" /></a>
+                                <div class="entry">
+                                   <a href="http://rework.reworkmedia.net/single_post.html">Vestibulum in lacus in felis pretium feugiat. </a>
+                                   <span class="date">July 1th, 2012</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="tab2" class="tab-content">
+                        <ul class="posts">
+                            <li>
+                                <a href="http://rework.reworkmedia.net/single_post.html"><img src="../media/images/content/posts_widget_04.jpg" alt="" /></a>
+                                <div class="entry">
+                                   <a href="http://rework.reworkmedia.net/single_post.html">Lorem ipsum dolor sit, consectetuer.</a>
+                                   <span class="date">July 8th, 2012</span>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="http://rework.reworkmedia.net/single_post.html"><img src="../media/images/content/posts_widget_05.jpg" alt="" /></a>
+                                <div class="entry">
+                                   <a href="http://rework.reworkmedia.net/single_post.html">Nam ultricies dolor eu velit varius scelerisque.</a>
+                                   <span class="date">July 5th, 2012</span>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="http://rework.reworkmedia.net/single_post.html"><img src="../media/images/content/posts_widget_06.jpg" alt="" /></a>
+                                <div class="entry">
+                                   <a href="http://rework.reworkmedia.net/single_post.html">Vestibulum in lacus in felis pretium feugiat. </a>
+                                   <span class="date">July 1th, 2012</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- /Tabs Widget With Posts -->
+
+            <!-- Accordion -->
+            <div class="widget">
+                <h5>Accordion Widget</h5>
+                <div class="accordion-button first" id="open"><a href="./blog.html">Website Design</a></div>
+                <div class="accordion-content">
+                    Lorem ipsum dolor sit amet nec, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.
+                </div>
+                <div class="accordion-button"><a href="./blog.html">Website Development</a></div>
+                <div class="accordion-content">
+                    Lorem ipsum dolor sit amet nec, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.
+                </div>
+                <div class="accordion-button"><a href="./blog.html">Content Management Systems</a></div>
+                <div class="accordion-content">
+                    Lorem ipsum dolor sit amet nec, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.
+                </div>
+                <div class="accordion-button"><a href="./blog.html">E-Commerce</a></div>
+                <div class="accordion-content">
+                    Lorem ipsum dolor sit amet nec, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.
+                </div>
+            </div>
+            <!-- Accordion -->
+
+            <!-- Twitter Feed -->
+            <div class="widget">
+                <h5>Latest Tweets</h5>
+                <div class="twitter-feed">
+                    <p>
+                        12 Outstanding Videos That Make Good Creative Use of AudioJungle Tracks <a href="./blog.html">http://t.co/7USabnpS</a>
+                        <span class="tweet-time">7 hours ago</span>
+                    </p>
+                    <p>
+                        Farewell Envato – I Will Miss You! <a href="./blog.html">http://t.co/ommJTJgp</a>
+                        <span class="tweet-time">Sep 5 (1 day ago)</span>
+                    </p>
+                </div>
+            </div>
+            <!-- /Twitter Feed -->
+
+            <!-- Photo Stream -->
+            <div class="widget">
+                <h5>Flickr Feed</h5>
+                <ul class="photo-stream">
+                    <li><a href="./blog.html"><img src="../media/images/content/photo_stream_01.jpg" alt="" /></a></li>
+                    <li><a href="./blog.html"><img src="../media/images/content/photo_stream_02.jpg" alt="" /></a></li>
+                    <li><a href="./blog.html"><img src="../media/images/content/photo_stream_03.jpg" alt="" /></a></li>
+                    <li><a href="./blog.html"><img src="../media/images/content/photo_stream_04.jpg" alt="" /></a></li>
+                    <li><a href="./blog.html"><img src="../media/images/content/photo_stream_05.jpg" alt="" /></a></li>
+                    <li><a href="./blog.html"><img src="../media/images/content/photo_stream_06.jpg" alt="" /></a></li>
+                    <li><a href="./blog.html"><img src="../media/images/content/photo_stream_07.jpg" alt="" /></a></li>
+                    <li><a href="./blog.html"><img src="../media/images/content/photo_stream_08.jpg" alt="" /></a></li>
+                </ul>
+            </div>
+            <!-- /Photo Stream -->
+
+        </div>
+        <!-- /Sidebar -->
+
+    
+    <!-- /Content -->
+    {% endblock %}

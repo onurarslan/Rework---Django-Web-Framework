@@ -1,0 +1,212 @@
+{% extends "base.html" %}{% block govde %}
+        <!-- Main Content -->
+        <div id="main">
+		{% if aranacak_kelime %}
+        <h3> Aradığınız {{aranacak_kelime}} için bulunan sonuçlar </h3>
+        {% endif %}
+            <!-- Normal Post -->
+            {% if icerikteAra %}
+            {% for makaleler in icerikteAra %}
+          <div class="post clearfix">
+                <a href="{{makaleler.get_absolute_url}}"><h2>{{makaleler.baslik}}</h2></a>
+                <ul class="post-meta">
+                    <li class="author">Yazar <a href="{{makaleler.yazar.slug}}">{{makaleler.yazar}}</a></li>
+                    <li class="date">{{makaleler.yayin_tarihi}}</li>
+                    <li class="tags">Etiketler <a href="./blog.html">{{makaleler.etiketler}}</a> </li>
+                    <li class="comments"><a href="./blog.html">{{yorumSayisi}}  Yorum </a></li>
+                </ul>
+                <div class="post-entry">
+                    <a href="./blog_post.html" title=""><img src="{{makaleler.resim.url}}" alt="" class="image" width="680" height="224" /></a>
+                    <p>
+                        {{makaleler.icerikOzet}}<a href="{{makaleler.get_absolute_url}}">Devamını Oku...</a>
+                    </p>
+                </div>
+               
+            </div>
+             {% endfor %}
+                {% endif %}
+            <!-- /Normal Post -->
+
+            <!-- Post With Slider --><!-- /Post With Slider -->
+
+            <!-- Post With Video --><!-- /Post With Video -->
+
+            <!-- Simple Post --><!-- /Simple Post -->
+        
+            <!-- Pagination -->
+            
+            
+            <ul class="pagination">
+            {% if sayfa.has_previous %}
+              <li class="prev"><a href="?sayfa={{ sayfa.previous_page_number }}">onceki</a></li>
+			  {% endif %}
+                                <li class="current"><a href="?sayfa={{ sayfa.number }}">{{ sayfa.number }}</a></li>
+								{{sayfa.page_range}}
+							
+                {% if sayfa.has_next %}
+              <li class="next"><a href="?sayfa={{ sayfa.next_page_number }}">ileri</a></li>
+                {% endif %}
+            </ul>
+            <!-- /Pagination -->
+
+        </div>
+        <!-- /Main Content -->
+
+        <!-- Sidebar -->
+        <div id="sidebar">
+        
+        <form method="get">
+        {{ arama_formu.aranacak_kelime.errors }}
+        {{ arama_formu.aranacak_kelime.label }}
+        {{ arama_formu.aranacak_kelime }}
+        
+        </form>
+        
+            
+
+            <!-- Blog Categories -->
+            <div class="widget">
+                <h5>Kategoriler</h5>
+                
+                <ul class="categories">
+                {% if makale %}
+                {% for makaleler in makale %}
+                    <li><a href="{{makaleler.kategori.get_absolute_url}}">{{makaleler.kategori}}</a></li>
+                    {% endfor %}
+                {% endif %}
+                </ul>
+                
+            </div>
+          
+            
+            <!-- /Blog Categories -->
+
+            <!-- Text Widget -->
+            <div class="widget">
+                <h5>Text Widget</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dui orci, dapibus non luctus, ultrices vel nunc. Donec lacinia mattis erat sit amet blandit.</p>
+            </div>
+            <!-- /Text Widget -->
+
+            <!-- Tabs Widget With Posts -->
+            <div class="widget">
+                <h5>Posts widget</h5>
+                <ul id="tabs">
+                    <li class="active"><a href="#tab1">Recent</a></li>
+                    <li><a href="#tab2">Popular</a></li>
+                </ul>
+                <div id="tabs_content_container">
+                    <div id="tab1" class="tab-content">
+                        <ul class="posts">
+                            <li>
+                                <a href="http://rework.reworkmedia.net/single_post.html"><img src="../media/images/content/posts_widget_01.jpg" alt="" /></a>
+                                <div class="entry">
+                                   <a href="http://rework.reworkmedia.net/single_post.html">Lorem ipsum dolor sit, consectetuer.</a>
+                                   <span class="date">July 8th, 2012</span>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="http://rework.reworkmedia.net/single_post.html"><img src="../media/images/content/posts_widget_02.jpg" alt="" /></a>
+                                <div class="entry">
+                                   <a href="http://rework.reworkmedia.net/single_post.html">Nam ultricies dolor eu velit varius scelerisque.</a>
+                                   <span class="date">July 5th, 2012</span>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="http://rework.reworkmedia.net/single_post.html"><img src="../media/images/content/posts_widget_03.jpg" alt="" /></a>
+                                <div class="entry">
+                                   <a href="http://rework.reworkmedia.net/single_post.html">Vestibulum in lacus in felis pretium feugiat. </a>
+                                   <span class="date">July 1th, 2012</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="tab2" class="tab-content">
+                        <ul class="posts">
+                            <li>
+                                <a href="http://rework.reworkmedia.net/single_post.html"><img src="../media/images/content/posts_widget_04.jpg" alt="" /></a>
+                                <div class="entry">
+                                   <a href="http://rework.reworkmedia.net/single_post.html">Lorem ipsum dolor sit, consectetuer.</a>
+                                   <span class="date">July 8th, 2012</span>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="http://rework.reworkmedia.net/single_post.html"><img src="../media/images/content/posts_widget_05.jpg" alt="" /></a>
+                                <div class="entry">
+                                   <a href="http://rework.reworkmedia.net/single_post.html">Nam ultricies dolor eu velit varius scelerisque.</a>
+                                   <span class="date">July 5th, 2012</span>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="http://rework.reworkmedia.net/single_post.html"><img src="../media/images/content/posts_widget_06.jpg" alt="" /></a>
+                                <div class="entry">
+                                   <a href="http://rework.reworkmedia.net/single_post.html">Vestibulum in lacus in felis pretium feugiat. </a>
+                                   <span class="date">July 1th, 2012</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- /Tabs Widget With Posts -->
+
+            <!-- Accordion -->
+            <div class="widget">
+                <h5>Accordion Widget</h5>
+                <div class="accordion-button first" id="open"><a href="./blog.html">Website Design</a></div>
+                <div class="accordion-content">
+                    Lorem ipsum dolor sit amet nec, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.
+                </div>
+                <div class="accordion-button"><a href="./blog.html">Website Development</a></div>
+                <div class="accordion-content">
+                    Lorem ipsum dolor sit amet nec, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.
+                </div>
+                <div class="accordion-button"><a href="./blog.html">Content Management Systems</a></div>
+                <div class="accordion-content">
+                    Lorem ipsum dolor sit amet nec, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.
+                </div>
+                <div class="accordion-button"><a href="./blog.html">E-Commerce</a></div>
+                <div class="accordion-content">
+                    Lorem ipsum dolor sit amet nec, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.
+                </div>
+            </div>
+            <!-- Accordion -->
+
+            <!-- Twitter Feed -->
+            <div class="widget">
+                <h5>Latest Tweets</h5>
+                <div class="twitter-feed">
+                    <p>
+                        12 Outstanding Videos That Make Good Creative Use of AudioJungle Tracks <a href="./blog.html">http://t.co/7USabnpS</a>
+                        <span class="tweet-time">7 hours ago</span>
+                    </p>
+                    <p>
+                        Farewell Envato – I Will Miss You! <a href="./blog.html">http://t.co/ommJTJgp</a>
+                        <span class="tweet-time">Sep 5 (1 day ago)</span>
+                    </p>
+                </div>
+            </div>
+            <!-- /Twitter Feed -->
+
+            <!-- Photo Stream -->
+            <div class="widget">
+                <h5>Flickr Feed</h5>
+                <ul class="photo-stream">
+                    <li><a href="./blog.html"><img src="../media/images/content/photo_stream_01.jpg" alt="" /></a></li>
+                    <li><a href="./blog.html"><img src="../media/images/content/photo_stream_02.jpg" alt="" /></a></li>
+                    <li><a href="./blog.html"><img src="../media/images/content/photo_stream_03.jpg" alt="" /></a></li>
+                    <li><a href="./blog.html"><img src="../media/images/content/photo_stream_04.jpg" alt="" /></a></li>
+                    <li><a href="./blog.html"><img src="../media/images/content/photo_stream_05.jpg" alt="" /></a></li>
+                    <li><a href="./blog.html"><img src="../media/images/content/photo_stream_06.jpg" alt="" /></a></li>
+                    <li><a href="./blog.html"><img src="../media/images/content/photo_stream_07.jpg" alt="" /></a></li>
+                    <li><a href="./blog.html"><img src="../media/images/content/photo_stream_08.jpg" alt="" /></a></li>
+                </ul>
+            </div>
+            <!-- /Photo Stream -->
+
+        </div>
+        <!-- /Sidebar -->
+
+    
+    <!-- /Content -->
+    {% endblock %}

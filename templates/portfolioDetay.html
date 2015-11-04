@@ -1,0 +1,49 @@
+{% extends "base.html" %}{% block govde %}{% for sayfa in sayfam.object_list %}
+        <h1 class="page-title-inner"><span class="section-title">Portfolio</span><span class="accent">{{sayfa.portfolioBaslik}}</span></h1>
+
+        <!-- Main Content -->
+        <div id="main">
+
+            <h1 class="capitalize">{{sayfa.portfolioBaslik}}</h1>
+            <div class="single-project">
+                <img src="{{sayfa.portfolioResim.url}}" alt="" />
+            </div>
+        </div>{% endfor %}
+        <!-- /Main Content -->
+
+        <!-- Sidebar -->
+        <div id="sidebar" class="project-description">
+
+             <!-- Project Navigation -->
+            <ul class="project-nav">
+			
+                {% if sayfam.has_previous %} <li><a href="?sayfam={{ sayfam.previous_page_number }}" class="prev">Geri</a></li>{% endif %}
+                <li><a href="{% url 'PortfolioGiris' %}" class="back">Portfolio</a></li>
+               	{% if sayfam.has_next %}<li><a href="?sayfam={{ sayfam.next_page_number }}" class="next">İleri</a></li>{% endif %}
+            </ul>
+            <!-- /Project Navigation -->
+
+            <div class="clear"></div>
+
+            <div class="widget short">
+                <h5>Genel Görünüm</h5>
+                <p>Nam ultricies dolor eu velit varius scelerisque. Vestibulum in lacus in felis pretium feugiat non sed elit. Duis pretium, urna sed pellentesque tincidunt, neque massa imperdiet nisi, sed cursus leo magna pretium elit. Proin bibendum ipsum a ante viverra lobortis. Phasellus id augue ligula, nec ultrices augue. Aliquam erat volutpat.</p>
+            </div>
+
+            <div class="widget short">
+                <h5>Job Description</h5>
+                <ul class="check-bold compressed">
+                    <li>Branding</li>
+                    <li>Design Best Practices</li>
+                    <li>Performance</li>
+                    <li>Responsive Design</li>
+                    <li>Typography</li>
+                </ul>
+            </div>
+
+            <input type="button" value="Launch" class="red" />
+
+        </div>
+        <!-- /Sidebar -->
+
+  {% endblock %}

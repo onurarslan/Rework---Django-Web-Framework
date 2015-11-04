@@ -1,0 +1,94 @@
+﻿{% extends "base.html" %}{% block govde %}
+        <!-- Main Content -->
+        <div id="main">
+		{% if aranacak_kelime %}
+        <h3> Aradığınız {{aranacak_kelime}} için bulunan sonuçlar </h3>
+        {% endif %}
+            <!-- Normal Post -->
+			
+            {% for makaleler in makale %}
+          <div class="post clearfix">
+                <a href="../../blog/{{makaleler.get_absolute_url}}"><h2>{{makaleler.baslik}}</h2></a>
+                <ul class="post-meta">
+                    <li class="date">{{makaleler.yayin_tarihi}}</li>
+                </ul>
+                <div class="post-entry">
+                    <a href="../../blog/{{makaleler.get_absolute_url}}" title=""><img src="{{makaleler.resim.url}}" alt="" class="image" width="680" height="224" /></a>
+                    <p>
+                        {{makaleler.icerikOzet}}<a href="../../blog/{{makaleler.get_absolute_url}}">Devamını Oku...</a>
+                    </p>
+                </div>
+               
+            </div>
+             {% endfor %}
+            <!-- /Normal Post -->
+
+            <!-- Post With Slider --><!-- /Post With Slider -->
+
+            <!-- Post With Video --><!-- /Post With Video -->
+
+            <!-- Simple Post --><!-- /Simple Post -->
+        
+            <!-- Pagination -->
+            
+            
+            <ul class="pagination">
+            {% if sayfa.has_previous %}
+              <li class="prev"><a href="?sayfa={{ sayfa.previous_page_number }}">onceki</a></li>
+			  {% endif %}
+                                <li class="current"><a href="?sayfa={{ sayfa.number }}">{{ sayfa.number }}</a></li>
+								{{sayfa.page_range}}
+							
+                {% if sayfa.has_next %}
+              <li class="next"><a href="?sayfa={{ sayfa.next_page_number }}">ileri</a></li>
+                {% endif %}
+            </ul>
+            <!-- /Pagination -->
+
+        </div>
+        <!-- /Main Content -->
+
+        <!-- Sidebar -->
+        <div id="sidebar">
+        
+        <form action="" method="get">
+        
+        {{ arama_formu.aranacak_kelime.label }}
+        {{ arama_formu.aranacak_kelime }}
+        
+        </form>
+        
+            
+
+            <!-- Blog Categories -->
+            <div class="widget">
+                <h5>Kategoriler</h5>
+                
+                <ul class="categories">
+                {% for kategoriler in kategori %}
+                    <li><a href="{{kategoriler.get_absolute_url}}">{{kategoriler.baslik}}</a></li>
+                    {% endfor %}
+                </ul>
+                
+            </div>
+          
+            
+            <!-- /Blog Categories -->
+
+           
+
+            <!-- Twitter Feed -->
+            <div class="widget">
+                <div class="twitter-feed">
+				<span>{{sosyal.0.twitterWidget|safe}}</span>
+
+                </div>
+            </div>
+            <!-- /Twitter Feed -->
+
+        </div>
+        <!-- /Sidebar -->
+
+    
+    <!-- /Content -->
+    {% endblock %}

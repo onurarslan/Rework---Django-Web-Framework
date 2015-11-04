@@ -1,0 +1,1 @@
+ <li class="tags">Etiketler {% for etiket in makaleler.etiketler.all %}<a href="{{etiket.slug}}">{{etiket.name}}</a>, {% endfor %} </li>

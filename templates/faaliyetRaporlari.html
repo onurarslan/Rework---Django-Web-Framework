@@ -1,0 +1,80 @@
+﻿{% extends "base.html" %}{% block govde %}
+    <div id="ickisim">
+      <div id="solmenuler">
+          <div id="solust"></div>
+          <div id="solorta">
+              <ul>
+			  <li><a href="{% url 'ttk' %}">Ticaret Sicil Belgeleri</a></li>
+              <li><a href="{% url 'oy' %}">Ortaklık Yapısı</a></li>
+                  <li><a href="{% url 'yk' %}">Yönetim Kurulu</a></li>
+                   <li><a href="{% url 'denetci' %}">Denetçiler</a></li>
+                   <li><a href="{% url 'uy' %}">Üst Yönetim</a></li>
+				   <li><a href="{% url 'df' %}">Dönemsel Finans Sonuçları</a></li>
+				   <li><a href="{% url 'fr' %}">Faaliyet Raporu</a></li>
+                   <li><a href="{% url 'gk' %}">Genel Kurul Bildirileri ve Tutanakları</a></li>
+              </ul>
+
+              <div class="clear"></div>
+          </div>
+          <div id="solkapanis"></div>
+          <div class="clear"></div>
+      </div>
+        <div id="sagtaraf">
+            <div id="sagust"></div>
+<div id="sagorta">
+  <div class="kapsayici">
+    <div class="sagortaresim">
+        <img src="../media/images/finansal_raporlar.jpg" />
+    </div>
+<div class="sagbaslik">
+    YILLIK FAALİYET RAPORLARI
+
+</div>
+<div class="sagicerik">
+
+
+<ul id="accordion">
+{% for i in fr %}
+			<li>
+				<a href="?section=recent" class="heading">{{i.faaliyetYili}} Yılı</a>
+				<ul id="recent">
+					<li><table class="sagtablo"><tbody>
+                        {% if i.faaliyetYillikRapor %}<tr><td class="sagicyazi">{{i.faaliyetYili}} Yılı Faaliyet Raporu</td><td class="sagicindir"><a href="{{i.faaliyetYillikRapor.url}}">İNDİR</a></td></tr>{% endif %}
+						{% if i.faaliyetUcuncuCeyrek %}<tr><td class="sagicyazi">3. Çeyrek Faaliyet Raporu</td><td class="sagicindir"><a href="{{i.faaliyetUcuncuCeyrek.url}}">İNDİR</a></td></tr>{% endif %}
+						{% if i.faaliyetIkinciCeyrek %}<tr><td class="sagicyazi">2. Çeyrek Faaliyet Raporu</td><td class="sagicindir"><a href="{{i.faaliyetIkinciCeyrek.url}}">İNDİR</a></td></tr>{% endif %}
+						{% if i.faaliyetBirinciCeyrek %}<tr><td class="sagicyazi">1. Çeyrek Faaliyet Raporu</td><td class="sagicindir"><a href="{{i.faaliyetBirinciCeyrek.url}}">İNDİR</a></td></tr>{% endif %}
+						</tbody></table>
+					</li>
+				
+				</ul>
+			</li>
+			<li>
+				<a href="?section=popular" class="heading">{{i.faaliyetYili}} Yılı</a>
+				<ul id="popular">
+				<li><table class="sagtablo"><tbody>
+{% if i.faaliyetYillikRapor %}<tr><td class="sagicyazi">{{i.faaliyetYili}} Yılı Faaliyet Raporu</td><td class="sagicindir"><a href="{{i.faaliyetYillikRapor.url}}">İNDİR</a></td></tr>{% endif %}
+						{% if i.faaliyetUcuncuCeyrek %}<tr><td class="sagicyazi">3. Çeyrek Faaliyet Raporu</td><td class="sagicindir"><a href="{{i.faaliyetUcuncuCeyrek.url}}">İNDİR</a></td></tr>{% endif %}
+						{% if i.faaliyetIkinciCeyrek %}<tr><td class="sagicyazi">2. Çeyrek Faaliyet Raporu</td><td class="sagicindir"><a href="{{i.faaliyetIkinciCeyrek.url}}">İNDİR</a></td></tr>{% endif %}
+						{% if i.faaliyetBirinciCeyrek %}<tr><td class="sagicyazi">1. Çeyrek Faaliyet Raporu</td><td class="sagicindir"><a href="{{i.faaliyetBirinciCeyrek.url}}">İNDİR</a></td></tr>{% endif %}</tbody></table></li>
+				</ul>
+			</li>
+			{% endfor %}
+		</ul>
+</div>
+
+</div>
+    <div class="clear">
+    </div>
+</div>
+            <div id="sagkapanis"></div>
+           
+            <div class="clear"></div>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="clear"></div>
+    {% endblock %}

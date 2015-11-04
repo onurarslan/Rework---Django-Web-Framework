@@ -1,0 +1,88 @@
+﻿{% extends "base.html" %}{% block govde %}
+        
+        <!-- Slider -->
+        <div id="main-slider" class="flexslider">
+            <ul class="slides">
+			{% for mansetler in manset %}
+              <li>
+                <img src="{{mansetler.mansetResim.url}}" width=940 height=360 alt="" />
+                <div class="flex-caption">
+                    <h3>{{mansetler.mansetBaslik}}</h3> <p>{{mansetler.mansetOzet}}</p><form action="/manset/{{mansetler.get_absolute_url}}" method="get"> <input type="submit" value="Devamı..." class="red" /></form>
+                </div>
+              </li>
+			  {% endfor %}
+            </ul>
+        </div>
+        <!-- /Slider -->
+
+        <!-- Project Carousel -->
+        <div id="project-wrapper" class="clearfix">
+
+            <div class="section-title one-fourth">
+                <h4>Projeler</h4>
+                <p>Firmamızın gerçekleştirdiği projeleri takip edebilirsiniz.</p>
+                <p><a href="{% url 'PortfolioGiris' %}">Devamını Oku...</a></p>
+                <div class="carousel-nav">
+                    <a id="project-prev" class="jcarousel-prev" href="./index.html"></a>
+                    <a id="project-next" class="jcarousel-next" href="./index.html"></a>
+                </div>
+            </div>
+
+            <ul class="project-carousel">
+			{% for portfolios in portfolio %}
+                <li>
+                    <a href="portfolio/{{portfolios.get_absolute_url}}" class="project-item">
+                        <img src="{{portfolios.portfolioResim.url}}" alt="" />
+                        <div class="overlay">
+                            <h5>{{portfolios.portfolioBaslik}}</h5>
+                            <p>{{portfolios.kategori}}</p>
+                        </div>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- /Project Carousel -->
+
+        <!-- Blog Carousel -->
+        <div id="blog-wrapper" class="clearfix">
+
+            <div class="section-title one-fourth">
+                <h4>Blog</h4>
+                <p>Firmamızın haberlerini burdan takip edebilirsiniz.</p>
+                <p><a href="{% url 'BlogAnasayfa' %}">Devamını Oku...</a></p>
+                <div class="carousel-nav">
+                    <a id="blog-prev" class="jcarousel-prev" href="./index.html"></a>
+                    <a id="blog-next" class="jcarousel-next" href="./index.html"></a>
+                </div>
+            </div>
+            
+            <ul class="blog-carousel">
+            {% if makale %}
+            {% for makaleler in makale %}
+                <li>
+                    <a href="{{makaleler.get_absolute_url}}">
+                        <h4>{{makaleler.baslik}}</h4>
+                    </a>
+                    <span class="date">{{makaleler.yayin_tarihi}}</span>
+                    <p>{{makaleler.icerikOzet}} ...</p>
+                </li>
+                {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+        <!-- /Blog Carousel -->
+
+        <!-- Logo List -->
+        <div class="logo-list">
+            <ul>
+			{% for referanslar in referans %}
+                <li><a href="{{referanslar.referansLink}}"><div class="bw-wrapper"><img src="{{ referanslar.referansLogo.url }}" width=186 height=89 alt="" /></div></a></li>
+				{% endfor %}
+            </ul>
+        </div>
+        <!-- /Logo List -->
+
+    
+    <!-- /Content -->
+    {% endblock %}
